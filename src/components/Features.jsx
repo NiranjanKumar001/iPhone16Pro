@@ -84,110 +84,85 @@ const Features = () => {
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-center items-start gap-6">
           <div className="flex-1 p-6 rounded-lg w-full md:w-auto">
             <p className="feature-text g_text text-gray-400 custom-font-size leading-relaxed">
-              iPhone 16 Pro features a Grade 5<br />
-              titanium design with a new, refined
+              New display technology allows us
               <br />
-              micro-blasted finish. Titanium has
+              to route display data under active
               <br />
-              one of the highest strength-to-
+              pixels with no distortion, resulting
               <br />
-              weight ratios of any metal, making
+              in thinner borders for larger
               <br />
-              these models{" "}
-              <span className="text-white font-medium">
-                incredibly strong and
-                <br />
-                impressively light.
-              </span>{" "}
-              iPhone 16 Pro
+              15.93 cm (6.3”) and 17.43 cm
               <br />
-              comes in four stunning colours —<br />
-              including new Desert Titanium.
+              (6.9”) <span className="text-white font-medium">Super Retina XDR displays</span>{" "}
+              <br />
+              that feel great in the hand.
             </p>
           </div>
 
           {/* Second Text Section */}
           <div className="flex-1 p-6 rounded-lg w-full md:w-auto mb-24">
             <p className="feature-text g_text text-gray-400 custom-font-size leading-relaxed">
-              Internal design improvements —<br />
-              including a 100% recycled
+              iPhone 16 Pro is splash, water and
               <br />
-              aluminium thermal substructure
+              dust resistant. It also has our
               <br />
-              and back glass optimisations that
+              latest-generation Ceramic Shield
               <br />
-              further dissipate heat — enable up
-              <br />
-              to 20%{" "}
+              material that’s{" "}
               <span className="text-white font-medium">
-                better sustained
+                two times tougher
                 <br />
-                performance
+                than any smartphone glass.
               </span>{" "}
-              than iPhone 15 Pro.
+              Talk
               <br />
-              So you can do all the things you
-              <br />
-              love — like high-intensity gaming
-              <br />— for longer.
+              about durable.
             </p>
           </div>
         </div>
 
         {/* Image Carousel with added margin-top */}
-        <div className="mt-12"> {/* Adjust this value as needed for spacing */}
+        <div className="mt-12">
           <ImageCarousel />
         </div>
 
-        {/* Duplicate Text Sections Below */}
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-center items-start gap-6 mt-12">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-center items-start gap-6 mt-48">
           <div className="flex-1 p-6 rounded-lg w-full md:w-auto">
             <p className="feature-text g_text text-gray-400 custom-font-size leading-relaxed">
-              iPhone 16 Pro features a Grade 5<br />
-              titanium design with a new, refined
+              New display technology allows us
               <br />
-              micro-blasted finish. Titanium has
+              to route display data under active
               <br />
-              one of the highest strength-to-
+              pixels with no distortion, resulting
               <br />
-              weight ratios of any metal, making
+              in thinner borders for larger
               <br />
-              these models{" "}
-              <span className="text-white font-medium">
-                incredibly strong and
-                <br />
-                impressively light.
-              </span>{" "}
-              iPhone 16 Pro
+              15.93 cm (6.3”) and 17.43 cm
               <br />
-              comes in four stunning colours —<br />
-              including new Desert Titanium.
+              (6.9”) <span className="text-white font-medium">Super Retina XDR displays</span>{" "}
+              <br />
+              that feel great in the hand.
             </p>
           </div>
 
           <div className="flex-1 p-6 rounded-lg w-full md:w-auto mb-24">
             <p className="feature-text g_text text-gray-400 custom-font-size leading-relaxed">
-              Internal design improvements —<br />
-              including a 100% recycled
+              iPhone 16 Pro is splash, water and
               <br />
-              aluminium thermal substructure
+              dust resistant. It also has our
               <br />
-              and back glass optimisations that
+              latest-generation Ceramic Shield
               <br />
-              further dissipate heat — enable up
-              <br />
-              to 20%{" "}
+              material that’s{" "}
               <span className="text-white font-medium">
-                better sustained
+                two times tougher
                 <br />
-                performance
+                than any smartphone glass.
               </span>{" "}
-              than iPhone 15 Pro.
+              Talk
               <br />
-              So you can do all the things you
-              <br />
-              love — like high-intensity gaming
-              <br />— for longer.
+              about durable.
             </p>
           </div>
         </div>
@@ -198,10 +173,10 @@ const Features = () => {
         .gradient-bg {
           background-image: radial-gradient(
             ellipse 80% 50% at center,
-            rgba(255, 200, 150, 0.2) 0%, 
-            rgba(60, 44, 38, 0.4) 25%,    
-            rgba(0, 0, 0, 0.3) 60%,       
-            rgba(0, 0, 0, 0.7) 80%, 
+            rgba(255, 200, 150, 0.2) 0%,
+            rgba(60, 44, 38, 0.4) 25%,
+            rgba(0, 0, 0, 0.3) 60%,
+            rgba(0, 0, 0, 0.7) 80%,
             rgba(0, 0, 0, 1) 100%
           );
           border-radius: 10px;
@@ -209,32 +184,28 @@ const Features = () => {
 
         .glow-effect {
           color: #fff5c3;
-          text-shadow: 
-            0 0 5px #a57a5c,
-            0 0 10px #a57a5c,
-            0 0 20px #a57a5c,
-            0 0 40px #6f432a,
-            0 0 80px #6f432a;
+          text-shadow: 0 0 5px #a57a5c, 0 0 10px #a57a5c, 0 0 20px #a57a5c,
+            0 0 40px #6f432a, 0 0 80px #6f432a;
         }
-        
+
         .blend-text {
           mix-blend-mode: screen;
           position: relative;
           z-index: 30;
         }
-        
+
         #features_title {
           margin-bottom: 10px;
           position: relative;
           z-index: 30;
         }
-        
+
         .mb-24 {
           margin-bottom: 120px;
         }
-        
+
         .custom-font-size {
-          font-size: 1.325rem; 
+          font-size: 1.325rem;
         }
       `}</style>
     </section>

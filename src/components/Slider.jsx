@@ -6,18 +6,13 @@ const Slider = () => {
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
 
-  const handleScroll = (e) => {
-    if (scrollRef.current && e.deltaY !== 0 && e.shiftKey) {
-      e.preventDefault();
-      scrollRef.current.scrollLeft += e.deltaY;
-    }
-  };
-
   const scroll = (direction) => {
     if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
       const scrollAmount = direction === 'left' ? -532 : 532; // Adjust based on image width
-      scrollRef.current.scrollLeft += scrollAmount;
+      scrollRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -46,8 +41,7 @@ const Slider = () => {
     <div className="relative">
       <div
         ref={scrollRef}
-        onWheel={handleScroll}
-        className="relative overflow-x-auto w-full mx-auto flex scrollbar-hide"
+        className="overflow-x-auto w-full mx-auto flex scrollbar-hide"
         style={{
           overflowY: 'hidden',
           scrollbarWidth: 'none',
@@ -59,15 +53,6 @@ const Slider = () => {
           paddingLeft: '180px',
         }}
       >
-        <style>
-          {`
-            .scrollbar-hide::-webkit-scrollbar {
-              display: none;
-            }
-          `}
-        </style>
-
-        {/* Flex container for images */}
         <div className="flex flex-nowrap w-full">
           {[ic1Img, ic2Img, ic3Img, ic4Img].map((image, index) => (
             <div
@@ -101,30 +86,35 @@ const Slider = () => {
               </p>
             </div>
           ))}
-          {/* Add extra space after the last image */}
           <div className="flex-shrink-0" style={{ width: '780px' }}></div>
         </div>
       </div>
 
-      {/* Navigation buttons */}
-      <div className="flex justify-center mt-6 space-x-4">
+      {/* Navigation buttons - Moved further down using 'top' */}
+      <div className="absolute top-0 right-0 mt-[700px] mr-6 flex space-x-4">
         <button
           onClick={() => scroll('left')}
-          className={`w-12 h-12 rounded-full flex items-center justify-center ${
-            isAtStart ? 'bg-gray-700 text-gray-500' : 'bg-white text-black'
+          className={`w-10 h-10 rounded-full flex items-center justify-center bg-[#1c1c1e] text-white ${
+            isAtStart ? 'opacity-50' : 'opacity-100'
           }`}
           disabled={isAtStart}
+          aria-label="Previous slide"
         >
-          &lt;
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 19l-7-7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
         <button
           onClick={() => scroll('right')}
-          className={`w-12 h-12 rounded-full flex items-center justify-center ${
-            isAtEnd ? 'bg-gray-700 text-gray-500' : 'bg-white text-black'
+          className={`w-10 h-10 rounded-full flex items-center justify-center bg-[#1c1c1e] text-white ${
+            isAtEnd ? 'opacity-50' : 'opacity-100'
           }`}
           disabled={isAtEnd}
+          aria-label="Next slide"
         >
-          &gt;
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
       </div>
     </div>

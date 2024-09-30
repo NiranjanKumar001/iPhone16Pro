@@ -27,7 +27,7 @@ import yellow from "/assets/images/yellow.jpg";
 // import black from "/assets/images/black.jpg";
 import explore1 from "/assets/images/explore1.jpg";
 import explore2 from "/assets/images/explore2.jpg";
-import chip from "/assets/images/chip.jpeg";
+import chip from "/assets/images/chip.png";
 import frame from "/assets/images/frame.png";
 
 
