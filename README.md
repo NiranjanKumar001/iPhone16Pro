@@ -81,5 +81,5 @@ Special thanks to [**Adrian Hajdin**](https://github.com/adrianhajdin) for his i
 
   <br/>
 
-  _Made with 💖 by Niranjan Kumar_
+  _Made_ by Niranjan Kumar_
 </div>
