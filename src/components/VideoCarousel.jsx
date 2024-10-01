@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 import { useEffect, useRef, useState } from "react";
 
-import { hightlightsSlides } from "../constants"; // Ensure this contains all 6 video entries
+import { hightlightsSlides } from "../constants";
 import { pauseImg, playImg, replayImg } from "../utils";
 
 const VideoCarousel = () => {
@@ -23,12 +23,11 @@ const VideoCarousel = () => {
   const [loadedData, setLoadedData] = useState([]);
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
 
-  // GSAP animation for video transition and scroll trigger
   useGSAP(() => {
     gsap.to("#slider", {
       transform: `translateX(${-100 * videoId}%)`,
       duration: 2,
-      ease: "power2.inOut", 
+      ease: "power2.inOut",
     });
 
     gsap.to("#video", {
@@ -46,7 +45,6 @@ const VideoCarousel = () => {
     });
   }, [isEnd, videoId]);
 
-  // Update progress bar and handle playback
   useEffect(() => {
     let currentProgress = 0;
     let span = videoSpanRef.current;
@@ -106,9 +104,8 @@ const VideoCarousel = () => {
     }
   }, [videoId, startPlay]);
 
-  // Handle loading metadata and playback control
   useEffect(() => {
-    if (loadedData.length === hightlightsSlides.length) { // Ensure we have loaded all videos
+    if (loadedData.length === hightlightsSlides.length) {
       if (!isPlaying) {
         videoRef.current[videoId].pause();
       } else {
@@ -117,13 +114,13 @@ const VideoCarousel = () => {
     }
   }, [startPlay, videoId, isPlaying, loadedData]);
 
-  // Process control actions
   const handleProcess = (type, i) => {
     switch (type) {
       case "video-end":
-        if (i < hightlightsSlides.length - 1) { // Check for last item
+        if (i < hightlightsSlides.length - 1) {
           setVideo((prev) => ({ ...prev, isEnd: true, videoId: i + 1 }));
-        } else { // If last item reached
+        } else {
+          // If last item reached
           setVideo((prev) => ({ ...prev, isLastVideo: true }));
         }
         break;
@@ -157,22 +154,24 @@ const VideoCarousel = () => {
         {hightlightsSlides.map((list, i) => (
           <div key={list.id} id="slider" className="sm:pr-40 pr-20">
             <div className="video-carousel_container">
-              <div className="flex-center rounded-3xl overflow-hidden bg-black" style={{
-                width: '1200px', // Full width of parent
-                height: '730px', // Increased height to accommodate videos
-              }}>
-                {/* use this div for the feature carousel in the form of img carousel */}
+              <div
+                className="flex-center rounded-3xl overflow-hidden bg-black"
+                style={{
+                  width: "1200px",
+                  height: "730px",
+                }}
+              >
                 <video
                   id="video"
                   playsInline={true}
                   className={`${
                     list.id === 2 && "translate-x-44"
-                  } pointer-events-none w-full h-full object-cover`} // Added classes for full fit
+                  } pointer-events-none w-full h-full object-cover`}
                   preload="auto"
                   muted
                   ref={(el) => (videoRef.current[i] = el)}
                   onEnded={() =>
-                    i !== hightlightsSlides.length - 1 // Check for last item dynamically
+                    i !== hightlightsSlides.length - 1
                       ? handleProcess("video-end", i)
                       : handleProcess("video-last")
                   }
@@ -211,7 +210,7 @@ const VideoCarousel = () => {
             }
           />
         </button>
-        
+
         <div className="flex-center py-5 px-7 mx-4 bg-gray-300 backdrop-blur rounded-full">
           {hightlightsSlides.map((_, i) => (
             <span
@@ -219,7 +218,6 @@ const VideoCarousel = () => {
               className="mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer"
               ref={(el) => (videoDivRef.current[i] = el)}
             >
-             
               <span
                 className="absolute h-full w-full rounded-full"
                 ref={(el) => (videoSpanRef.current[i] = el)}
@@ -227,7 +225,6 @@ const VideoCarousel = () => {
             </span>
           ))}
         </div>
-        
       </div>
     </>
   );

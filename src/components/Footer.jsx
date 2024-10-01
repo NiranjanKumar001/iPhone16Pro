@@ -17,12 +17,10 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Updated to flex and align items in the center */}
         <div className="flex items-center my-5">
           <div className="bg-neutral-700 h-[1px] flex-grow" />
         </div>
 
-        {/* Ensuring copyright and footer links are in one line */}
         <div className="flex flex-wrap justify-between items-center">
           <p className="font-semibold text-gray text-xs mr-8">
             Copyright © 2024 Apple Inc. All rights reserved.

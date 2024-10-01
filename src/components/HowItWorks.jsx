@@ -67,10 +67,12 @@ const HowItWorks = () => {
               intelligence
               <br /> system that helps you
               <span className="text-white font-bold">
-                write, express yourself and get things done<br /> effortlessly
+                write, express yourself and get things done
+                <br /> effortlessly
               </span>
-              .With groundbreaking privacy protections, it gives you <br />peace of
-              mind that no one else can access your data — not even Apple.
+              .With groundbreaking privacy protections, it gives you <br />
+              peace of mind that no one else can access your data — not even
+              Apple.
             </p>
           </div>
         </div>

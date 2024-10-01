@@ -6,12 +6,12 @@ Source: https://sketchfab.com/3d-models/iphone-16-pro-96be8c7e49fa4f949855db3e7f
 Title: Iphone 16 Pro
 */
 
-import * as THREE from 'three';
-import React, { useEffect, useRef } from 'react'
-import { useGLTF, useTexture } from '@react-three/drei'
+import * as THREE from "three";
+import React, { useEffect, useRef } from "react";
+import { useGLTF, useTexture } from "@react-three/drei";
 
 function Model(props) {
-  const { nodes, materials } = useGLTF('/models/scene.glb')
+  const { nodes, materials } = useGLTF("/models/scene.glb");
 
   const texture = useTexture(props.item.img);
   //four color, black ,white,natural,desert
@@ -57,8 +57,8 @@ function Model(props) {
         material={materials.phone16pro}
       />
     </group>
-  )
+  );
 }
 export default Model;
 
-useGLTF.preload('/models/scene.glb')
+useGLTF.preload("/models/scene.glb");

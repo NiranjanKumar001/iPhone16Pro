@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Features = () => {
   const videoRef = useRef(null);
-  const [hasPlayed, setHasPlayed] = useState(false); // Track video play status
+  const [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
     gsap.to(videoRef.current, {
@@ -26,7 +26,6 @@ const Features = () => {
       },
     });
 
-    // Text animation on scroll
     gsap.fromTo(
       "#features_title",
       { opacity: 0, y: 100 },
@@ -80,7 +79,6 @@ const Features = () => {
       </div>
 
       <div className="relative z-30 bottom-0 left-0 right-0 p-8 mt-12 gradient-bg">
-        {/* Aligning the two text sections horizontally */}
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-center items-start gap-6">
           <div className="flex-1 p-6 rounded-lg w-full md:w-auto">
             <p className="feature-text g_text text-gray-400 custom-font-size leading-relaxed">
@@ -94,13 +92,15 @@ const Features = () => {
               <br />
               15.93 cm (6.3”) and 17.43 cm
               <br />
-              (6.9”) <span className="text-white font-medium">Super Retina XDR displays</span>{" "}
+              (6.9”){" "}
+              <span className="text-white font-medium">
+                Super Retina XDR displays
+              </span>{" "}
               <br />
               that feel great in the hand.
             </p>
           </div>
 
-          {/* Second Text Section */}
           <div className="flex-1 p-6 rounded-lg w-full md:w-auto mb-24">
             <p className="feature-text g_text text-gray-400 custom-font-size leading-relaxed">
               iPhone 16 Pro is splash, water and
@@ -122,7 +122,6 @@ const Features = () => {
           </div>
         </div>
 
-        {/* Image Carousel with added margin-top */}
         <div className="mt-12">
           <ImageCarousel />
         </div>
@@ -140,7 +139,10 @@ const Features = () => {
               <br />
               15.93 cm (6.3”) and 17.43 cm
               <br />
-              (6.9”) <span className="text-white font-medium">Super Retina XDR displays</span>{" "}
+              (6.9”){" "}
+              <span className="text-white font-medium">
+                Super Retina XDR displays
+              </span>{" "}
               <br />
               that feel great in the hand.
             </p>
@@ -168,7 +170,6 @@ const Features = () => {
         </div>
       </div>
 
-      {/* Styles */}
       <style jsx>{`
         .gradient-bg {
           background-image: radial-gradient(
