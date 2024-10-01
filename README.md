@@ -9,7 +9,8 @@
 
   <br/>
 
-  ### An immersive 3D web experience showcasing the **iPhone 16 Pro** website clone using modern web technologies. Enjoy cool animations, interactive 3D models, and cool design!
+
+  ### This project presents the ⭐ **first clone** ⭐ of the iPhone 16 Pro website. An immersive 3D web experience showcasing the **iPhone 16 Pro** website clone using modern web technologies. Enjoy cool animations, interactive 3D models, and a sleek design!
 
   <br/>
 
