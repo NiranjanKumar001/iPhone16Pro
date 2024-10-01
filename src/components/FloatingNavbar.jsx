@@ -13,29 +13,31 @@ const FloatingNavbar = () => {
         }
     };
 
+    // Function to check scroll position and toggle navbar visibility
+    const checkScrollPosition = () => {
+        const highlightSection = document.getElementById("highlights");
+        if (!highlightSection) return; // Prevent errors if section is not present
+
+        const highlightPosition = highlightSection.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+        const highlightHeight = highlightSection.offsetHeight;
+
+        // Trigger point when the user has scrolled past half of the Highlights section
+        const triggerPoint = highlightPosition <= screenHeight - (highlightHeight / 2);
+
+        // Show or hide navbar based on scroll position
+        setIsNavbarVisible(triggerPoint);
+    };
+
     // Scroll detection to trigger navbar visibility
     useEffect(() => {
-        const handleScroll = () => {
-            const highlightSection = document.getElementById("highlights");
-            const highlightPosition = highlightSection.getBoundingClientRect().top;
-            const screenHeight = window.innerHeight;
-            const highlightHeight = highlightSection.offsetHeight;
+        window.addEventListener("scroll", checkScrollPosition);
 
-            // Trigger point when the user has scrolled past half of the Highlights section
-            const triggerPoint = highlightPosition <= screenHeight - (highlightHeight / 2);
-
-            // Show or hide navbar based on scroll position
-            if (triggerPoint) {
-                setIsNavbarVisible(true);
-            } else {
-                setIsNavbarVisible(false);
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
+        // Initial check on component mount
+        checkScrollPosition();
 
         return () => {
-            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("scroll", checkScrollPosition);
         };
     }, []);
 
@@ -47,21 +49,25 @@ const FloatingNavbar = () => {
     return (
         <header
             id="floating-navbar"
-            className="fixed top-0 left-0 w-full bg-zinc z-50 py-3 px-5 sm:px-10 flex justify-between items-center opacity-0 border-b border-[#4A4A4A]"
+            className="fixed top-0 left-0 w-full bg-zinc z-50 py-3 px-5 sm:px-10 flex justify-between items-center border-b border-[#4A4A4A]"
+            style={{ transform: 'translateY(-100%)', opacity: 0 }} // Initially hidden
         >
-            <div className="text-white text-lg font-semibold ml-64">
+            <div className="text-white text-xl font-bold ml-56">
                 iPhone 16 Pro
             </div>
 
-            <nav className="flex gap-x-8 text-sm" style={{fontSize:'0.75rem'}}>
-                <a href="#overview" className=" text-white border-b-2">Overview</a>
+            <nav className="flex gap-x-8 text-sm" style={{ fontSize: '0.75rem', marginRight: '230px' }}>
+                <a href="#overview" className="relative text-white">
+                    Overview
+                    {/* Thinner underline */}
+                    <span className="absolute left-0 bottom-[-15px] w-full h-[0.1px] bg-white"></span>
+                </a>
                 <a href="#switch">Switch from Android to iPhone</a>
                 <a href="#tech-specs">Tech Specs</a>
+                <button className="bg-blue text-white rounded-full text-xs" style={{ padding: '4px 12px', fontSize: '0.75rem' }}>
+                    Buy
+                </button>
             </nav>
-
-            <div>
-            <a href="#highlights" className="btn bg-white text-white rounded-full text-xs hover:bg-opacity-90 transition-all" style={{ padding: '4px 12px', fontSize: '0.75rem' }}>Buy</a>
-            </div>
         </header>
     );
 };

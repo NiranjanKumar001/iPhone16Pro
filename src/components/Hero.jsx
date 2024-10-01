@@ -72,7 +72,7 @@ const HeroWithNavbar = () => {
                 {/* Hero Content */}
                 <div className="relative h-full w-full flex-center flex-col z-10">
                     <div className="flex flex-col items-center">
-                        <p id="hero" className="hero-title text-5xl font-semibold mb-4">iPhone 16 Pro</p>
+                        <p id="hero" className=" hero-title text-5xl font-semibold mb-4"style={{color:'white'}}>iPhone 16 Pro</p>
                         <img
                             id="image"
                             src={appleIntelligenceImage}
