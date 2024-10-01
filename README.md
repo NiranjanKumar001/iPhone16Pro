@@ -15,7 +15,7 @@
 
   ## 🚀 **Features**
 
-   🌀 **ReactJS** for a dynamic and responsive UI
+   🌀 **ReactJS** for building dynamic UI components
    🌐 **Three.js** for stunning 3D graphics
    🎯 **GSAP** for smooth animations and transitions
    🎨 **Tailwind CSS** for modern styling
@@ -78,9 +78,7 @@
 
 Special thanks to [**Adrian Hajdin**](https://github.com/adrianhajdin) for his insightful iPhone 15 tutorial, which greatly assisted in the development of this project. This project is intended for educational purposes only.
 
-
-
-
+  <br/>
 
   _Made with 💖 by Niranjan Kumar_
 </div>
