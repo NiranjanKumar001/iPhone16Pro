@@ -69,10 +69,10 @@
 
   ## 🌟 **Future Enhancements**
 
-   Add more detailed 3D interactions with the iPhone model
-   Implement additional GSAP animations for a more dynamic experience
-   Integrate light and dark mode themes
-   Optimize for mobile responsiveness
+   1.Add more detailed 3D interactions with the iPhone model
+   2.Implement additional GSAP animations for a more dynamic experience
+   3.Integrate light and dark mode themes
+   4.Optimize for mobile responsiveness
 
   <br/>
 
