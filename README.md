@@ -28,7 +28,8 @@
   ![Project Screenshot](https://i.postimg.cc/vTr06xHT/Screenshot-2024-10-02-024906.png)
 
   <br/>
-  🔗 **Live Preview**
+  
+  ## 🔗 **Live Preview**
 
   Check out the live version of the website: [iPhone 16 Pro Clone](https://i-phone-16-pro.vercel.app/)
 
