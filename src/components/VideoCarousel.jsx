@@ -23,12 +23,14 @@ const VideoCarousel = () => {
   const [loadedData, setLoadedData] = useState([]);
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
   // pop ups
+  //remove the ease option if you dont want the bouncing effect
   useGSAP(()=>{
     gsap.from("#playBar",{
       delay:0,
       duration:0.75,
       opacity:0,
       scale:0,
+      ease:"bounce.inOut",
       bottom: "-130px",
       scrollTrigger:{
         trigger:"#slider",
