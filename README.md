@@ -1,4 +1,4 @@
-<div align="center">
+![image](https://github.com/user-attachments/assets/9ce6fc43-359e-4ad3-a263-25bb849380af)<div align="center">
 
   # 📱 iPhone 16 Pro 
 
@@ -10,7 +10,7 @@
   <br/>
 
 
-  ### This project presents the ⭐ **first clone** ⭐ of the iPhone 16 Pro website. An immersive 3D web experience showcasing the **iPhone 16 Pro** website clone using modern web technologies. Enjoy cool animations, interactive 3D models, and a sleek design!
+  ### This project presents the ⭐ **first clone** ⭐ of the iPhone 16 Pro website. An immersive 3D web experience showcasing the **iPhone 16 Pro** website clone using modern web technologies. Enjoy cool animations, interactive 3D models, and a sleek design! please consider giving it a star! ⭐
 
   <br/>
 
