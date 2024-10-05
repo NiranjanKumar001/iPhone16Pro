@@ -22,6 +22,24 @@ const VideoCarousel = () => {
 
   const [loadedData, setLoadedData] = useState([]);
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
+  // pop ups
+  //remove the ease option if you dont want the bouncing effect
+  useGSAP(()=>{
+    gsap.from("#playBar",{
+      delay:0,
+      duration:0.75,
+      opacity:0,
+      scale:0,
+      ease:"bounce.inOut",
+      bottom: "-130px",
+      scrollTrigger:{
+        trigger:"#slider",
+        start:"center bottom",
+        end:"70% 20%",
+        toggleActions:"restart reset resume reset",
+      }
+    })
+  })
 
   useGSAP(() => {
     gsap.to("#slider", {
@@ -196,7 +214,8 @@ const VideoCarousel = () => {
         ))}
       </div>
 
-      <div className="relative flex-center mt-80">
+{/* the play bar */}
+      <div id="playBar" className="fixed bottom-10 left-1 right-1 z-10 flex-center mt-10  overflow-visible ">
         <button className="control-btn">
           <img
             src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg}
