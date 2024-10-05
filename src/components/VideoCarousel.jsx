@@ -22,6 +22,20 @@ const VideoCarousel = () => {
 
   const [loadedData, setLoadedData] = useState([]);
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
+  // pop ups
+  useGSAP(()=>{
+    console.log("here");
+    gsap.from("#playBar",{
+      opacity:0,
+      delay:0,
+      duration:0,
+      scrollTrigger:{
+        trigger:"#slider",
+        toggleActions: "restart none none none",
+        markers:true
+      }
+    })
+  })
 
   useGSAP(() => {
     gsap.to("#slider", {
@@ -150,7 +164,7 @@ const VideoCarousel = () => {
 
   return (
     <>
-      <div className="flex items-center">
+      <div className="flex items-center border-2 border-red-500">
         {hightlightsSlides.map((list, i) => (
           <div key={list.id} id="slider" className="sm:pr-40 pr-20">
             <div className="video-carousel_container">
@@ -196,7 +210,8 @@ const VideoCarousel = () => {
         ))}
       </div>
 
-      <div className="relative flex-center mt-80">
+{/* the play bar */}
+      <div id="playBar" className="fixed hidden bottom-5 left-1 right-1 flex-center mt-10 border-2 overflow-visible border-blue">
         <button className="control-btn">
           <img
             src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg}
