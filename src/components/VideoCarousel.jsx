@@ -60,10 +60,10 @@ const VideoCarousel = () => {
             gsap.to(videoDivRef.current[videoId], {
               width:
                 window.innerWidth < 760
-                  ? "10vw" // mobile
+                  ? "15vw" // mobile
                   : window.innerWidth < 1200
                   ? "10vw" // tablet
-                  : "4vw", // laptop
+                  : "4vw", // laptop and desktops
             });
 
             gsap.to(span[videoId], {
@@ -150,22 +150,23 @@ const VideoCarousel = () => {
 
   return (
     <>
-      <div className="flex items-center">
+      <div className="flex items-center flex-col sm:flex-row">
         {hightlightsSlides.map((list, i) => (
           <div key={list.id} id="slider" className="sm:pr-40 pr-20">
             <div className="video-carousel_container">
               <div
                 className="flex-center rounded-3xl overflow-hidden bg-black"
                 style={{
-                  width: "1200px",
-                  height: "730px",
+                  width: "100%", // Full width for responsiveness
+                  height: "auto", // Auto adjust height
+                  maxWidth: "1200px", // Max width for large screens
                 }}
               >
                 <video
                   id="video"
                   playsInline={true}
                   className={`${
-                    list.id === 2 && "translate-x-44"
+                    list.id === 2 && "sm:translate-x-44 translate-x-0"
                   } pointer-events-none w-full h-full object-cover`}
                   preload="auto"
                   muted
@@ -196,7 +197,7 @@ const VideoCarousel = () => {
         ))}
       </div>
 
-      <div className="relative flex-center mt-80">
+      <div className="relative flex-center mt-16 sm:mt-80">
         <button className="control-btn">
           <img
             src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg}
@@ -211,11 +212,11 @@ const VideoCarousel = () => {
           />
         </button>
 
-        <div className="flex-center py-5 px-7 mx-4 bg-gray-300 backdrop-blur rounded-full">
+        <div className="flex-center py-3 px-5 sm:py-5 sm:px-7 mx-2 sm:mx-4 bg-gray-300 backdrop-blur rounded-full">
           {hightlightsSlides.map((_, i) => (
             <span
               key={i}
-              className="mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer"
+              className="mx-1 sm:mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer"
               ref={(el) => (videoDivRef.current[i] = el)}
             >
               <span
