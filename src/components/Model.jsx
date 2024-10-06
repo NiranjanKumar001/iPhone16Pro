@@ -50,31 +50,32 @@ const Model = () => {
 
   const parentRef = useRef(null);
   const divRef = useRef(null);
+  const titleRef = useRef(null);
+  const colorPickerRef = useRef(null);
 
-  
   useEffect(() => {
     gsap.fromTo(
-      divRef.current, 
-      { opacity: 0.9, y: 0, visibility: "hidden", position: "fixed" }, 
+      divRef.current,
+      { opacity: 0.9, y: 0, visibility: "hidden", position: "fixed" },
       {
         opacity: 1,
         y: 0,
         visibility: "visible",
         duration: 0.5,
         scrollTrigger: {
-          trigger: parentRef.current, 
-          start: "top bottom",  
-          end: "bottom top",  
+          trigger: parentRef.current,
+          start: "top bottom",
+          end: "bottom top",
           toggleActions: "play none none reverse",
-          scrub: true,  
+          scrub: true,
           onEnter: () => {
             gsap.to(divRef.current, {
               opacity: 1,
               visibility: "visible",
               y: 0,
               position: "sticky",
-              bottom: 20,  
-              duration: 0.5
+              bottom: 20,
+              duration: 0.5,
             });
           },
           onLeaveBack: () => {
@@ -82,14 +83,65 @@ const Model = () => {
               position: "fixed",
               bottom: 20,
               duration: 0.5,
-              opacity:1
+              opacity: 1,
             });
           },
-        }
+        },
       }
     );
+
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: -20 }, // Start hidden and slightly above
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "back.out(1.7)", // Add easing for a nice pop effect
+        scrollTrigger: {
+          trigger: divRef.current,
+          start: "top bottom", // Trigger when the top of the section hits the bottom of the viewport
+          end: "bottom top", // End when the bottom of the section hits the top of the viewport
+          toggleActions: "play none none reverse", // Play on enter, reverse on leave
+        },
+      }
+    );
+
+    gsap.fromTo(
+      colorPickerRef.current,
+      { opacity: 0, y: -20 }, // Start hidden and slightly above
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "back.out(1.7)", // Add easing for a nice pop effect
+        scrollTrigger: {
+          trigger: divRef.current,
+          start: "top bottom", // Trigger when the top of the section hits the bottom of the viewport
+          end: "bottom top", // End when the bottom of the section hits the top of the viewport
+          toggleActions: "play none none reverse", // Play on enter, reverse on leave
+        },
+      }
+    );
+
+    // Floating effect for the title (p tag)
+    gsap.to(titleRef.current, {
+      y: "-=10", // Move up by 10 pixels
+      duration: 1,
+      ease: "sine.inOut",
+      yoyo: true, // Reverse the animation
+      repeat: -1, // Repeat indefinitely
+    });
+
+    // Floating effect for the color picker
+    gsap.to(colorPickerRef.current, {
+      y: "-=10", // Move up by 10 pixels
+      duration: 1,
+      ease: "sine.inOut",
+      yoyo: true, // Reverse the animation
+      repeat: -1, // Repeat indefinitely
+    });
   }, []);
-  
 
   useGSAP(() => {
     gsap.to("#heading", { y: 0, opacity: 1 });
@@ -139,25 +191,42 @@ const Model = () => {
           </div>
 
           <div
-            className="mx-auto left-1 right-1 z-10 mt-10 overflow-visible w-fit"
+            className="mx-auto left-1 right-1 z-10 overflow-visible w-fit"
             ref={divRef}
-            style={{ bottom: "20px" }} 
+            style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)' }}
           >
-            <p className="text-sm font-light text-center mb-5 bg-gray-300 w-fit p-2 rounded-full">
-              {model.title}
-            </p>
-            <div className="flex-center">
-              <ul className="color-container gap-2">
+            <div className="flex-center flex-col"> {/* Added flex-col to stack items vertically */}
+              <p
+                ref={titleRef} // Attach the ref here
+                className="text-sm font-light text-center mb-5 bg-gray-300 w-fit p-2 rounded-full"
+              >
+                {model.title}
+              </p>
+              <ul className="color-container gap-2" ref={colorPickerRef}> {/* Attach the ref here */}
                 {models.map((item, i) => (
-                  <div className={`rounded-full cursor-pointer w-8 h-8 flex-center ${ model.title === item.title ? 'border-blue border-1' : 'border-0'}`}>
-                    <div className={`rounded-full cursor-pointer w-7 h-7 flex-center ${ model.title === item.title ? 'border-gray-700 border-1' : 'border-0'}`}>
+                  <div
+                    className={`rounded-full cursor-pointer w-8 h-8 flex-center ${
+                      model.title === item.title
+                        ? "border-blue border-1"
+                        : "border-0"
+                    }`}
+                    key={i} // Moved key to the correct element
+                  >
+                    <div
+                      className={`rounded-full cursor-pointer w-7 h-7 flex-center ${
+                        model.title === item.title
+                          ? "border-gray-700 border-1"
+                          : "border-0"
+                      }`}
+                    >
                       <li
-                      key={i}
-                      className={`w-6 h-6 rounded-full shadow-top ${model.title === item.title ? 'border-sky-50' : ''} border-2`}
-                      style={{ backgroundColor: item.color[0] }}
-                      onClick={() => setModel(item)}
+                        className={`w-6 h-6 rounded-full shadow-top ${
+                          model.title === item.title ? "border-sky-50" : ""
+                        } border-2`}
+                        style={{ backgroundColor: item.color[0] }}
+                        onClick={() => setModel(item)}
                       />
-                    </div> 
+                    </div>
                   </div>
                 ))}
               </ul>

@@ -54,7 +54,7 @@
      ```
   2. Navigate to the project directory:
      ```bash
-     cd iPhone-16-Pro
+     cd iPhone16Pro
      ```
   3. Install dependencies:
      ```bash
