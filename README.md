@@ -76,6 +76,14 @@
 
   <br/>
 
+  ## Contact
+
+For any inquiries, please reach out to me at:  
+[niranjankumarofficial003@gmail.com](mailto:niranjankumarofficial003@gmail.com)
+
+   
+<br/>
+
   ## 🙏 **Acknowledgments**
 
 Special thanks to [**Adrian Hajdin**](https://github.com/adrianhajdin) for his insightful iPhone 15 tutorial, which greatly assisted in the development of this project. This project is intended for educational purposes only.
