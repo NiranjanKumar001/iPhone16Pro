@@ -61,7 +61,7 @@ const Model = () => {
         opacity: 1,
         y: 0,
         visibility: "visible",
-        duration: 0.5,
+        duration: 0.7, // Increased duration for a smoother effect
         scrollTrigger: {
           trigger: parentRef.current,
           start: "top bottom",
@@ -75,14 +75,14 @@ const Model = () => {
               y: 0,
               position: "sticky",
               bottom: 20,
-              duration: 0.5,
+              duration: 0.7, // Increased duration for a smoother effect
             });
           },
           onLeaveBack: () => {
             gsap.to(divRef.current, {
               position: "fixed",
               bottom: 20,
-              duration: 0.5,
+              duration: 0.7, // Increased duration for a smoother effect
               opacity: 1,
             });
           },
@@ -96,8 +96,8 @@ const Model = () => {
       {
         opacity: 1,
         y: 0,
-        duration: 0.5,
-        ease: "back.out(1.7)", // Add easing for a nice pop effect
+        duration: 0.7, // Increased duration for a smoother effect
+        ease: "bounce.out", // Changed easing for a more vibrant effect
         scrollTrigger: {
           trigger: divRef.current,
           start: "top bottom", // Trigger when the top of the section hits the bottom of the viewport
@@ -109,12 +109,13 @@ const Model = () => {
 
     gsap.fromTo(
       colorPickerRef.current,
-      { opacity: 0, y: -20 }, // Start hidden and slightly above
+      { opacity: 0, y: 20, scale: 0.8 }, // Start hidden, slightly below, and scaled down
       {
         opacity: 1,
         y: 0,
-        duration: 0.5,
-        ease: "back.out(1.7)", // Add easing for a nice pop effect
+        scale: 1, // Scale to normal size
+        duration: 0.7, // Duration for a smoother effect
+        ease: "back.out(1.7)", // Easing for a more vibrant effect
         scrollTrigger: {
           trigger: divRef.current,
           start: "top bottom", // Trigger when the top of the section hits the bottom of the viewport
@@ -138,6 +139,50 @@ const Model = () => {
       y: "-=10", // Move up by 10 pixels
       duration: 1,
       ease: "sine.inOut",
+      yoyo: true, // Reverse the animation
+      repeat: -1, // Repeat indefinitely
+    });
+    
+    // New scroll float effect for the color picker
+    gsap.fromTo(
+      colorPickerRef.current,
+      { opacity: 0, y: 20 }, // Start hidden and slightly below
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.7, // Increased duration for a smoother effect
+        ease: "bounce.out", // Changed easing for a more vibrant effect
+        scrollTrigger: {
+          trigger: divRef.current,
+          start: "top bottom", // Trigger when the top of the section hits the bottom of the viewport
+          end: "bottom top", // End when the bottom of the section hits the top of the viewport
+          toggleActions: "play none none reverse", // Play on enter, reverse on leave
+        },
+      }
+    );
+
+    // Full bounce out effect for the color picker on entering the model section
+    gsap.fromTo(colorPickerRef.current, 
+      { y: 20 }, // Start slightly below
+      {
+        y: 0, // Move to its original position
+        duration: 1.0, // Duration for a smoother bounce effect
+        ease: "elastic.out(4, 0.7)", // Increased elasticity for a more pronounced and bouncier effect
+        scale: 1.1, // Slightly scale up for a more dynamic entrance
+        delay: 0.2, // Added delay for a staggered effect
+        scrollTrigger: {
+          trigger: divRef.current,
+          start: "top bottom", // Trigger when the top of the section hits the bottom of the viewport
+          once: true, // Only trigger once
+        },
+      }
+    );
+
+    // Additional bouncy effect for the color picker
+    gsap.to(colorPickerRef.current, {
+      y: "-=5", // Move up by 5 pixels for a floating effect
+      duration: 0.5, // Duration for the floating effect
+      ease: "sine.inOut", // Smooth easing for the floating effect
       yoyo: true, // Reverse the animation
       repeat: -1, // Repeat indefinitely
     });
