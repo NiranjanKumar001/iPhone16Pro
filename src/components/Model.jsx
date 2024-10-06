@@ -8,6 +8,7 @@ import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
 import { models, sizes } from "../constants";
 import { animateWithGsapTimeline } from "../utils/animations";
+import { div } from "three/examples/jsm/nodes/Nodes.js";
 
 const Model = () => {
   const [size, setSize] = useState("small");
@@ -146,14 +147,18 @@ const Model = () => {
               {model.title}
             </p>
             <div className="flex-center">
-              <ul className="color-container">
+              <ul className="color-container gap-2">
                 {models.map((item, i) => (
-                  <li
-                    key={i}
-                    className="w-6 h-6 rounded-full mx-2 border-1px cursor-pointer border-2 border-sky-50"
-                    style={{ backgroundColor: item.color[0] }}
-                    onClick={() => setModel(item)}
-                  />
+                  <div className={`rounded-full cursor-pointer w-8 h-8 flex-center ${ model.title === item.title ? 'border-blue border-1' : 'border-0'}`}>
+                    <div className={`rounded-full cursor-pointer w-7 h-7 flex-center ${ model.title === item.title ? 'border-gray-700 border-1' : 'border-0'}`}>
+                      <li
+                      key={i}
+                      className={`w-6 h-6 rounded-full shadow-top ${model.title === item.title ? 'border-sky-50' : ''} border-2`}
+                      style={{ backgroundColor: item.color[0] }}
+                      onClick={() => setModel(item)}
+                      />
+                    </div> 
+                  </div>
                 ))}
               </ul>
             </div>
