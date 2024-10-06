@@ -8,6 +8,7 @@ import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
 import { models, sizes } from "../constants";
 import { animateWithGsapTimeline } from "../utils/animations";
+import { div } from "three/examples/jsm/nodes/Nodes.js";
 
 const Model = () => {
   const [size, setSize] = useState("small");
@@ -47,11 +48,54 @@ const Model = () => {
     }
   });
 
+  const parentRef = useRef(null);
+  const divRef = useRef(null);
+
+  
+  useEffect(() => {
+    gsap.fromTo(
+      divRef.current, 
+      { opacity: 0.9, y: 0, visibility: "hidden", position: "fixed" }, 
+      {
+        opacity: 1,
+        y: 0,
+        visibility: "visible",
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: parentRef.current, 
+          start: "top bottom",  
+          end: "bottom top",  
+          toggleActions: "play none none reverse",
+          scrub: true,  
+          onEnter: () => {
+            gsap.to(divRef.current, {
+              opacity: 1,
+              visibility: "visible",
+              y: 0,
+              position: "sticky",
+              bottom: 20,  
+              duration: 0.5
+            });
+          },
+          onLeaveBack: () => {
+            gsap.to(divRef.current, {
+              position: "fixed",
+              bottom: 20,
+              duration: 0.5,
+              opacity:1
+            });
+          },
+        }
+      }
+    );
+  }, []);
+  
+
   useGSAP(() => {
     gsap.to("#heading", { y: 0, opacity: 1 });
   }, []);
   return (
-    <section className="common-padding">
+    <section className="common-padding" ref={parentRef}>
       <div className="screen-max-width">
         <h1 id="heading" className="section-heading" style={{ color: "white" }}>
           Take a closer look.
@@ -94,19 +138,27 @@ const Model = () => {
             </Canvas>
           </div>
 
-          <div className="mx-auto w-full">
-            <p className="text-sm font-light text-center mb-5">{model.title}</p>
+          <div
+            className="mx-auto left-1 right-1 z-10 mt-10 overflow-visible w-fit"
+            ref={divRef}
+            style={{ bottom: "20px" }} 
+          >
+            <p className="text-sm font-light text-center mb-5 bg-gray-300 w-fit p-2 rounded-full">
+              {model.title}
+            </p>
             <div className="flex-center">
-              <ul className="color-container">
+              <ul className="color-container gap-2">
                 {models.map((item, i) => (
-                  <li
-                    key={i}
-                    className="w-6 h-6 rounded-full mx-2 border-1px  cursor-pointer border-2 border-sky-50"
-                    style={{
-                      backgroundColor: item.color[0],
-                    }}
-                    onClick={() => setModel(item)}
-                  />
+                  <div className={`rounded-full cursor-pointer w-8 h-8 flex-center ${ model.title === item.title ? 'border-blue border-1' : 'border-0'}`}>
+                    <div className={`rounded-full cursor-pointer w-7 h-7 flex-center ${ model.title === item.title ? 'border-gray-700 border-1' : 'border-0'}`}>
+                      <li
+                      key={i}
+                      className={`w-6 h-6 rounded-full shadow-top ${model.title === item.title ? 'border-sky-50' : ''} border-2`}
+                      style={{ backgroundColor: item.color[0] }}
+                      onClick={() => setModel(item)}
+                      />
+                    </div> 
+                  </div>
                 ))}
               </ul>
             </div>

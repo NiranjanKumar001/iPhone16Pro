@@ -229,7 +229,7 @@ const VideoCarousel = () => {
             }
           />
         </button>
-
+            
         <div className="flex-center py-5 px-7 mx-4 bg-gray-300 backdrop-blur rounded-full">
           {hightlightsSlides.map((_, i) => (
             <span
