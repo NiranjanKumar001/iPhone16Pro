@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/9ce6fc43-359e-4ad3-a263-25bb849380af)<div align="center">
+
 
   # 📱 iPhone 16 Pro 
 
