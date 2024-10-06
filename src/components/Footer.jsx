@@ -1,5 +1,6 @@
 import React from "react";
 import { footerLinks } from "../constants";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -27,12 +28,14 @@ const Footer = () => {
           </p>
           <div className="flex flex-wrap">
             {footerLinks.map((link, i) => (
+              <Link to={`/${link}`} key={link}>
               <p key={link} className="font-semibold text-gray text-xs">
                 {link}
                 {i !== footerLinks.length - 1 && (
                   <span className="mx-2">|</span>
                 )}
               </p>
+              </Link>
             ))}
           </div>
         </div>
