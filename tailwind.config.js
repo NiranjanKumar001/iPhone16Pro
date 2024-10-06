@@ -16,6 +16,12 @@ export default {
         },
         zinc:"#101010",
       },
+      borderWidth: {
+        '1': '1px', 
+      },
+      boxShadow: {
+        'top': '0 -4px 6px -1px rgba(0, 0, 0, 0.4)', 
+      },
     },
   },
   plugins: [],

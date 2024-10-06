@@ -95,7 +95,7 @@ export const models = [
     id: 2,
     title: "17.43 cm (6.9″) iPhone 16 Pro Max & 15.93 cm (6.3″) iPhone 16 Pro in Blue Titanium",
     color: ["#392e5e", "#6395ff", "#21242e"],
-    img: yellowImg,
+    img: yellowImg,  
   },
   {
     id: 3,
