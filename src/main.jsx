@@ -19,6 +19,10 @@ import SalesPolicy from './components/pages/SalesPolicy.jsx'
 import Legal from './components/pages/Legal.jsx'
 import SiteMap from './components/pages/SiteMap.jsx'
 
+import Switch from './components/pages/Switch.jsx'
+import Specs from './components/pages/Specs.jsx'
+import Iphone16Pro from './components/pages/Iphone16Pro.jsx'
+
 import './index.css'
 
 //...
@@ -80,27 +84,30 @@ const router = createBrowserRouter([
   }, {
     path: "/Support",
     element: <Support />
-  },
-  
-  {
+  },{
     path: "/Privacy Policy",
     element: <PrivacyPolicy />
-  },
-  {
+  },{
     path: "/Terms of Use",
     element: <TermsofUse />
-  },
-  {
+  },{
     path: "/Sales Policy",
     element: <SalesPolicy />
-  },
-  {
+  },{
     path: "/Legal",
     element: <Legal />
-  },
-  {
+  },{
     path: "/Site Map",
     element: <SiteMap />
+  },{
+    path: "/Switch",
+    element: <Switch />
+  },{
+    path: "/Specs",
+    element: <Specs />
+  },{
+    path: "/Iphone16Pro",
+    element: <Iphone16Pro />
   },
   
 ]);
