@@ -1,5 +1,9 @@
 import React from "react";
 
+import { footerLinks } from "../constants";
+import { Link } from "react-router-dom";
+
+
 
 
 // const footerLinks = {
@@ -286,6 +290,7 @@ export default function Footer() {
           More ways to shop: <a href="#" className="text-blue underline">Find an Apple Store</a> or <a href="#" className="text-blue underline">other retailer</a> near you. Or call 0008000 040 1966.
         </div>
 
+
         {/* Copyright Section */}
         <div className="border-t border-gray-700 pt-2 mr-2">
           <div className="flex flex-col md:flex-row justify-between items-center text-[12px] text-gray-400 pl-0 pr-500 ">
@@ -306,6 +311,23 @@ export default function Footer() {
             <div className="mt-4 md:mt-0">
               <span>India</span>
             </div>
+
+        <div className="flex flex-wrap justify-between items-center">
+          <p className="font-semibold text-gray text-xs mr-8">
+            Copyright © 2024 Apple Inc. All rights reserved.
+          </p>
+          <div className="flex flex-wrap">
+            {footerLinks.map((link, i) => (
+              <Link to={`/${link}`} key={link}>
+              <p key={link} className="font-semibold text-gray text-xs">
+                {link}
+                {i !== footerLinks.length - 1 && (
+                  <span className="mx-2">|</span>
+                )}
+              </p>
+              </Link>
+            ))}
+
           </div>
         </div>
       </footer>

@@ -65,7 +65,7 @@ const HowItWorks = () => {
             <p className="hiw-text g_fadeIn text-center">
               iPhone 16 Pro is built for Apple Intelligence, the personal
               intelligence
-              <br /> system that helps you
+              <br /> system that helps you 
               <span className="text-white font-bold">
                 write, express yourself and get things done
                 <br /> effortlessly
