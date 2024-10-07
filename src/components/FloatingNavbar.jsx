@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
 
 const FloatingNavbar = () => {
   const [isNavbarVisible, setIsNavbarVisible] = useState(false);
@@ -63,17 +64,17 @@ const FloatingNavbar = () => {
         className="flex gap-x-8 text-sm"
         style={{ fontSize: "0.75rem", marginRight: "230px" }}
       >
-        <a href="#overview" className="relative text-white">
+        <Link to="/" className="relative text-white">
           Overview
           <span className="absolute left-0 bottom-[-15px] w-full h-[0.1px] bg-white"></span>
-        </a>
-        <a href="#switch">Switch from Android to iPhone</a>
-        <a href="#tech-specs">Tech Specs</a>
+        </Link>
+        <Link to="/Switch">Switch from Android to iPhone</Link>
+        <Link to="/Specs">Tech Specs</Link>
         <button
           className="bg-blue text-white rounded-full text-xs"
           style={{ padding: "4px 12px", fontSize: "0.75rem" }}
         >
-          Buy
+          <Link to="/Iphone16Pro">Buy</Link>
         </button>
       </nav>
     </header>
