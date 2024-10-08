@@ -146,22 +146,19 @@ const Model = () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) { // Check if the element is in view
           gsap.to(colorPickerRef.current, {
-            scale: 1.05, // Subtle scale up when in view
-            rotation: 5, // Slight rotation for added effect
-            duration: 0.3, // Duration for the scale effect
+            scale: 1.2, // Scale up when in view
+            duration: 0.1, // Duration for the scale effect
+            yoyo:true,
             ease: "bounce.out", // Bouncy easing for the scroll effect
           });
         } else {
           gsap.to(colorPickerRef.current, {
             scale: 1, // Scale back to original size when out of view
-            rotation: 0, // Reset rotation when out of view
             duration: 0.3, // Duration for the scale effect
             ease: "bounce.out", // Bouncy easing for the scroll effect
           });
         }
       });
-    }, {
-      threshold: 0.1 // Trigger when 10% of the element is in view
     });
 
     // Start observing the colorPickerRef element
