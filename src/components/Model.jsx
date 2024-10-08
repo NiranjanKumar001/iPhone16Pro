@@ -1,5 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ModelView from "./ModelView";
 import { useEffect, useRef, useState } from "react";
 import { yellowImg } from "../utils";
@@ -8,7 +9,8 @@ import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
 import { models, sizes } from "../constants";
 import { animateWithGsapTimeline } from "../utils/animations";
-import { div } from "three/examples/jsm/nodes/Nodes.js";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Model = () => {
   const [size, setSize] = useState("small");
@@ -18,22 +20,19 @@ const Model = () => {
     img: yellowImg,
   });
 
-  //camera
   const cameraControlSmall = useRef();
   const cameraControlLarge = useRef();
-
-  //model
-
   const small = useRef(new THREE.Group());
   const large = useRef(new THREE.Group());
-
-  //rotation of the model
-
   const [smallRotation, setSmallRotation] = useState(0);
   const [largeRotation, setLargeRotation] = useState(0);
 
-  const t1 = gsap.timeline();
+  const parentRef = useRef(null);
+  const modelContainerRef = useRef(null);
+  const colorPickerRef = useRef(null);
+
   useEffect(() => {
+    const t1 = gsap.timeline();
     if (size === "large") {
       animateWithGsapTimeline(t1, small, smallRotation, "#view1", "#view2", {
         transform: "translateX(-100%)",
@@ -46,144 +45,111 @@ const Model = () => {
         duration: 2,
       });
     }
-  });
-
-  const parentRef = useRef(null);
-  const divRef = useRef(null);
-  const titleRef = useRef(null);
-  const colorPickerRef = useRef(null);
-
-  useEffect(() => {
-    gsap.fromTo(
-      divRef.current,
-      { opacity: 0.9, y: 0, visibility: "hidden", position: "fixed" },
-      {
-        opacity: 1,
-        y: 0,
-        visibility: "visible",
-        duration: 0.7, // Increased duration for a smoother effect
-        scrollTrigger: {
-          trigger: parentRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          toggleActions: "play none none reverse",
-          scrub: true,
-          onEnter: () => {
-            gsap.to(divRef.current, {
-              opacity: 1,
-              visibility: "visible",
-              y: 0,
-              position: "sticky",
-              bottom: 20,
-              duration: 0.7, // Increased duration for a smoother effect
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(divRef.current, {
-              position: "fixed",
-              bottom: 20,
-              duration: 0.7, // Increased duration for a smoother effect
-              opacity: 1,
-            });
-          },
-        },
-      }
-    );
-
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: -20 }, // Start hidden and slightly above
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.7, // Increased duration for a smoother effect
-        ease: "bounce.out", // Changed easing for a more vibrant effect
-        scrollTrigger: {
-          trigger: divRef.current,
-          start: "top bottom", // Trigger when the top of the section hits the bottom of the viewport
-          end: "bottom top", // End when the bottom of the section hits the top of the viewport
-          toggleActions: "play none none reverse", // Play on enter, reverse on leave
-        },
-      }
-    );
-
-    gsap.fromTo(
-      colorPickerRef.current,
-      { opacity: 0, y: 20, scale: 0.8 }, // Start hidden, slightly below, and scaled down
-      {
-        opacity: 1,
-        y: 0,
-        scale: 0.8, // Scale to normal size
-        duration: 0.7, // Duration for a smoother effect
-        ease: "back.out(1.7)", // Easing for a more vibrant effect
-        scrollTrigger: {
-          trigger: divRef.current,
-          start: "top bottom", // Trigger when the top of the section hits the bottom of the viewport
-          end: "bottom top", // End when the bottom of the section hits the top of the viewport
-          toggleActions: "play none none reverse", // Play on enter, reverse on leave
-        },
-      }
-    );
-
-    // Add mouse enter and leave event listeners
-    colorPickerRef.current.addEventListener('mouseenter', () => {
-      gsap.to(colorPickerRef.current, {
-        scale: 1.4, // Scale up on hover
-        duration: 0.1, // Duration for the scale effect
-        ease: "bounce.out", // Bouncy easing for the hover effect
-      });
-    });
-
-    colorPickerRef.current.addEventListener('mouseleave', () => {
-      gsap.to(colorPickerRef.current, {
-        scale: 0.8, // Scale back to original size
-        duration: 0.3, // Duration for the scale effect
-        ease: "bounce.out", // Bouncy easing for the hover effect
-      });
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { // Check if the element is in view
-          gsap.to(colorPickerRef.current, {
-            scale: 1.2, // Scale up when in view
-            duration: 0.1, // Duration for the scale effect
-            yoyo:true,
-            ease: "bounce.out", // Bouncy easing for the scroll effect
-          });
-        } else {
-          gsap.to(colorPickerRef.current, {
-            scale: 1, // Scale back to original size when out of view
-            duration: 0.3, // Duration for the scale effect
-            ease: "bounce.out", // Bouncy easing for the scroll effect
-          });
-        }
-      });
-    });
-
-    // Start observing the colorPickerRef element
-    observer.observe(colorPickerRef.current);
-
-    window.addEventListener('scroll', () => { 
-      gsap.to(colorPickerRef.current, {
-        scale: 1.2, // Adjusted scale for a more subtle effect
-        duration: 0.3, // Duration for the scale effect
-        ease: "bounce.out", // Bouncy easing for the scroll effect
-      });
-    });
-
-  }, []);
+  }, [size, smallRotation, largeRotation]);
 
   useGSAP(() => {
-    gsap.to("#heading", { y: 0, opacity: 1 });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: parentRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+    tl.to("#heading", { 
+      y: 0, 
+      opacity: 1, 
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    // Color picker animation
+    gsap.fromTo(
+      colorPickerRef.current,
+      { 
+        opacity: 0, 
+        y: 50, 
+        scale: 0.5
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: modelContainerRef.current,
+          start: "center center",
+          end: "bottom top",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Color options animation
+    gsap.fromTo(
+      colorPickerRef.current.querySelectorAll('li'),
+      { 
+        opacity: 0, 
+        scale: 0.5, 
+        stagger: 0.1 
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "back.out(2)",
+        scrollTrigger: {
+          trigger: colorPickerRef.current,
+          start: "top bottom",
+          end: "center center",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Color picker hover and click animations
+    const colorItems = colorPickerRef.current.querySelectorAll('li');
+    colorItems.forEach((item, index) => {
+      item.addEventListener('mouseenter', () => {
+        gsap.to(item, {
+          scale: 1.2,
+          duration: 0.3,
+          ease: "elastic.out(1, 0.3)",
+        });
+      });
+
+      item.addEventListener('mouseleave', () => {
+        gsap.to(item, {
+          scale: 1,
+          duration: 0.3,
+          ease: "elastic.out(1, 0.3)",
+        });
+      });
+
+      item.addEventListener('click', () => {
+        gsap.to(item, {
+          scale: 0.8,
+          duration: 0.1,
+          ease: "power2.in",
+          yoyo: true,
+          repeat: 1,
+        });
+        setModel(models[index]);
+      });
+    });
+
   }, []);
+
   return (
-    <section className="common-padding" ref={parentRef}>
+    <section className="common-padding relative" ref={parentRef}>
       <div className="screen-max-width">
-        <h1 id="heading" className="section-heading" style={{ color: "white" }}>
+        <h1 id="heading" className="section-heading opacity-0 transform translate-y-10" style={{ color: "white" }}>
           Take a closer look.
         </h1>
-        <div className="flex flex-col items-center mt-5">
+        <div className="flex flex-col items-center mt-5" ref={modelContainerRef}>
           <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative">
             <ModelView
               index={2}
@@ -194,7 +160,6 @@ const Model = () => {
               item={model}
               size={size}
             />
-
             <ModelView
               index={1}
               groupRef={small}
@@ -204,7 +169,6 @@ const Model = () => {
               item={model}
               size={size}
             />
-
             <Canvas
               className="w-full h-full"
               style={{
@@ -222,50 +186,29 @@ const Model = () => {
           </div>
 
           <div
-            className="mx-auto left-1 right-1 z-10 overflow-visible w-fit"
-            ref={divRef}
-            style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)' }}
+            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 bg-black bg-opacity-20 backdrop-blur-md rounded-2xl p-4"
+            ref={colorPickerRef}
           >
-            <div className="flex-center flex-col"> {/* Added flex-col to stack items vertically */}
-              <p
-                ref={titleRef} // Attach the ref here
-                className="text-sm font-light text-center mb-5 bg-gray-300 w-fit p-2 rounded-full"
-              >
-                {model.title}
-              </p>
-              <ul className="color-container gap-2" ref={colorPickerRef}> {/* Attach the ref here */}
-                {models.map((item, i) => (
-                  <div
-                    className={`rounded-full cursor-pointer w-8 h-8 flex-center ${
-                      model.title === item.title
-                        ? "border-blue border-1"
-                        : "border-0"
-                    }`}
-                    key={i} // Moved key to the correct element
-                  >
-                    <div
-                      className={`rounded-full cursor-pointer w-7 h-7 flex-center ${
-                        model.title === item.title
-                          ? "border-gray-700 border-1"
-                          : "border-0"
-                      }`}
-                    >
-                      <li
-                        className={`w-6 h-6 rounded-full shadow-top ${
-                          model.title === item.title ? "border-sky-50" : ""
-                        } border-2`}
-                        style={{ backgroundColor: item.color[0] }}
-                        onClick={() => setModel(item)}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </ul>
-            </div>
+            <p className="text-sm font-light text-center mb-3 text-white">
+              {model.title}
+            </p>
+            <ul className="flex justify-center items-center gap-4">
+              {models.map((item, i) => (
+                <li
+                  key={i}
+                  className={`w-8 h-8 rounded-full cursor-pointer transition-all duration-300 ease-in-out hover:shadow-xl ${
+                    model.title === item.title ? 'ring-2 ring-white' : ''
+                  }`}
+                  style={{ backgroundColor: item.color[0] }}
+                  onClick={() => setModel(item)}
+                />
+              ))}
+            </ul>
           </div>
         </div>
       </div>
     </section>
   );
 };
+
 export default Model;
