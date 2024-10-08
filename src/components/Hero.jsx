@@ -10,6 +10,7 @@ import {
 import { navLists } from "../constants";
 import appleIntelligenceImage from "./1.png";
 import FloatingNavbar from "./FloatingNavbar";
+import { Link } from "react-router-dom";
 
 const HeroWithNavbar = () => {
   const [videoSrc, setVideoSrc] = useState(
@@ -63,15 +64,17 @@ const HeroWithNavbar = () => {
 
         <header className="w-full flex flex-col justify-between items-center relative z-20">
           <nav className="flex w-full screen-max-width items-center py-3 sm:px-10 px-5 bg-transparent">
-            <img src={appleImg} alt="Apple" width={12} height={12} />
+            <Link to="/" ><img src={appleImg} alt="Apple" width={12} height={12} /></Link>
             <div className="flex justify-center max-sm:hidden">
               {navLists.map((nav) => (
+                <Link to={`/${nav}`} >
                 <div
                   key={nav}
                   className="px-6 text-sm cursor-pointer text-gray-200 hover:text-white transition-all"
                 >
                   {nav}
                 </div>
+                </Link>
               ))}
             </div>
             <div className="flex items-center gap-9">

@@ -156,7 +156,7 @@ const Features = () => {
               <br />
               latest-generation Ceramic Shield
               <br />
-              material that’s{" "}
+              material that's{" "}
               <span className="text-white font-medium">
                 two times tougher
                 <br />
@@ -170,7 +170,7 @@ const Features = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx='true'>{`
         .gradient-bg {
           background-image: radial-gradient(
             ellipse 80% 50% at center,
