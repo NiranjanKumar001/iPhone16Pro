@@ -184,9 +184,9 @@ const Features = () => {
         }
 
         .glow-effect {
-          color: #fff5c3;
-          text-shadow: 0 0 5px #a57a5c, 0 0 10px #a57a5c, 0 0 20px #a57a5c,
-            0 0 40px #6f432a, 0 0 80px #6f432a;
+          color: #fffaf6;
+          text-shadow: 0 0 10px #ebdcd2, 0 0 20px #ae8569,
+            0 0 40px #8f6245, 0 0 40px #8f6245, 0 0 40px #8f6245, 0 0 40px #5b351c, 0 0 40px #5b351c, 0 0 80px #5b351c;
         }
 
         .blend-text {
