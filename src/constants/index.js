@@ -24,6 +24,371 @@ export const navLists = [
   "Support"
 ];
 
+export const navData = [
+  {
+    id: 1,
+    title: "Store",
+    sections: [
+      {
+        heading: "Shop",
+        links: [
+          "Shop the Latest",
+          "Mac",
+          "iPad",
+          "iPhone",
+          "Apple Watch",
+          "Accessories",
+        ]
+      },
+      {
+        heading: "Quick Links",
+        links: [
+          "Festivie Offers",
+          "find a Store",
+          "Order Status",
+          "Ways to Buy"
+        ]
+      },
+      {
+        heading: "Shop Special Stores",
+        links: [
+          "Education",
+          "Business"
+        ]
+      }
+    ],
+  
+  },
+  {
+    id: 2,
+    title: "Mac",
+    sections: [
+      {
+        heading: "Explore Mac",
+        links: [
+          "Explore All Mac",
+          "MacBook Air",
+          "MacBook Pro",
+          "iMac",
+          "Mac mini",
+          "Mac Studio",
+          "Mac Pro",
+          "Displays",
+        ]
+      },
+      {
+        heading: "Shop Mac",
+        links: [
+          "Shop Mac",
+          "Mac Accessories",
+          "Ways to Buy"
+        ]
+      },
+      {
+        heading: "More from Mac",
+        links: [
+          "Mac Support",
+          "AppleCare+ for Mac",
+          "MacOS Sequioa",
+          "Apple Intelligence",
+          "Apps by Apple",
+          "Continuity",
+          "iCloud+",
+          "Mac for Business",
+          "Education"
+        ]
+      },
+      
+    ],
+    extra: [
+      "Compare Mac",
+      "Switch from PC to Mac",
+    ]
+  },
+  {
+    id: 3,
+    title: "iPad",
+    sections: [
+      {
+        heading: "Explore iPad",
+        links: [
+          "Explore All iPad",
+          "iPad Pro",
+          "iPad Air",
+          "iPad",
+          "iPad mini",
+          "Apple Pencil",
+          "Keyboards",
+        ]
+      },
+      {
+        heading: "Shop iPad",
+        links: [
+          "Shop iPad",
+          "iPad Accessories",
+          "Ways to Buy"
+        ]
+      },
+      {
+        heading: "More from iPad",
+        links: [
+          "iPad Support",
+          "AppleCare+ for iPad",
+          "iPadOS 18",
+          "Apple Intelligence",
+          "Apps by Apple",
+          "iCloud+",
+          "Education"
+        ]
+      }
+    ],
+    extra: [
+    "Compare iPad",
+    "Why iPad"
+    ]
+  },
+  {
+    id: 4,
+    title: "iPhone",
+    sections: [
+      {
+        heading: "Explore iPhone",
+        links: [
+          "Explore All iPhone",
+          "iPhone 16 Pro",
+          "iPhone 16",
+          "iPhone 14",
+          "iPhone SE",
+        ]
+      },
+      {
+        heading: "Shop iPhone",
+        links: [
+          "Shop iPhone",
+          "iPhone Accessories",
+          "Apple Trade In",
+          "Ways to Buy"
+        ]
+      },
+      {
+        heading: "More from iPhone",
+        links: [
+          "iPhone Support",
+          "AppleCare+ for iPhone",
+          "iOS 18",
+          "Apple Intelligence",
+          "Apps by Apple",
+          "iCloud+",
+          "Wallet",
+          "Siri"
+        ]
+      }
+    ],
+    extra: [
+      "Compare iPhone",
+      "Switch from Android"
+    ]
+  },
+  {
+    id: 5,
+    title: "Watch",
+    sections: [
+      {
+        heading: "Explore Watch",
+        links: [
+          "Explore All Apple Watch",
+          "Apple Watch Series 10",
+          "Apple Watch Ultra 2",
+          "Apple Watch SE",
+          "Apple Watch Nike",
+        ]
+      },
+      {
+        heading: "Shop Watch",
+        links: [
+          "Shop Apple Watch",
+          "Apple Watch Bands",
+          "Apple Watch Accessories",
+          "Ways to Buy"
+        ]
+      },
+      {
+        heading: "More from Watch",
+        links: [
+          "Watch Support",
+          "AppleCare+",
+          "watchOS 11",
+          "Apple Watch For Your Kids",
+          "Apps by Apple",
+        ]
+      }
+    ],
+    extra: [
+      "Compare Watch",
+      "Why Apple Watch"
+    ]
+  },
+  {
+    id: 6,
+    title: "AirPods",
+    sections: [
+      {
+        heading: "Explore AirPods",
+        links: [
+          "Explore All AirPods",
+          "AirPods 4",
+          "AirPods Pro 2",
+          "AirPods Max",
+        ]
+      },
+      {
+        heading: "Shop",
+        links: [
+          "Shop AirPods",
+          "AirPods Accessories"
+        ]
+      },
+      {
+        heading: "More from AirPods",
+        links: [
+          "AirPods Support",
+          "AppleCare+ for Headphones",
+          "Apple Music"
+        ]
+      }
+    ],
+    extra: [
+      "Compare AirPods"
+    ]
+  },
+  {
+    id: 7,
+    title: "TV&Home",
+    sections: [
+      {
+        heading: "Explore TV & Home",
+        links: [
+          "Explore TV & Home",
+          "Apple TV 4K",
+          "HomePod",
+          "HomePod Mini",
+        ]
+      },
+      {
+        heading: "Shop TV & Home",
+        links: [ 
+          "Shop Apple TV 4K",
+          "Shop HomePod",
+          "Shop HomePod Mini",
+          "Shop Siri Remote",
+          "TV & Home Accessories"
+        ]
+      },
+      {
+        heading: "More from TV & Home",
+        links: [
+          "Apple TV Support",
+          "HomePod Support",
+          "AppleCare+",
+          "Apple TV app",
+          "Apple TV+",
+          "Home app",
+          "Apple Music",
+          "Siri",
+          "AirPlay"
+        ]
+      }
+    ],
+  },
+  {
+    id: 8,
+    title: "Entertainment",
+    sections: [
+      {
+        heading: "Explore Entertainment",
+        links: [
+          "Explore Entertainment",
+          "Apple One",
+          "Apple TV+",
+          "Apple Music",
+          "Apple Arcade",
+          "Apple Podcasts",
+          "Apple Books",
+          "Apple Store",
+        ]
+      },
+      {
+        heading: "Support",
+        links: [ 
+          "AppleTV+ Support",
+          "Apple Music Support",
+        ]
+      },
+    ],
+  },
+  {
+    id: 9,
+    title: "Accessories",
+    sections: [
+      {
+        heading: "Shop Accessories",
+        links: [
+          "Shop All Accessories",
+          "Mac",
+          "iPad",
+          "iPhone",
+          "Apple Watch",
+          "AirPods",
+          "TV & Home",
+        ]
+      },
+      {
+        heading: "Explore Accessories",
+        links: [ 
+          "Made By Apple",
+          "Beats by Dr.Dre",
+          "AirTag"
+        ]
+      },
+    ]
+  },
+  {
+    id: 10,
+    title: "Support",
+    sections: [
+      {
+        heading: "Explore Support",
+        links: [
+          "iPhone",
+          "Mac",
+          "iPad",
+          "Watch",
+          "AirPods",
+          "TV",
+        ]
+      },
+      {
+        heading: "Get Help",
+        links: [ 
+          "Community",
+          "Check Coverage",
+          "Repair",
+          "Contact Us"
+        ]
+      },
+      {
+        heading: "Helpful Topics",
+        links: [ 
+          "Get AppleCare+",
+          "Apple Account and Password",
+          "Billing & Subscription",
+          "Find My",
+          "Accessibilty"
+        ]
+      },
+    ],
+  }
+];
 export const hightlightsSlides = [
   {
     id: 1,

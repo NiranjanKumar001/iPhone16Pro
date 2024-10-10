@@ -13,7 +13,7 @@ import Entertainment from './components/pages/Entertainment.jsx'
 import Accessories from './components/pages/Accessories.jsx'
 import Support from './components/pages/Support.jsx'
 
-import PrivacyPolicy from './components/pages/PrivacyPolicy.jsx'
+import PrivacyPolicy from './components/pages/Privacy&Policy.jsx'
 import TermsofUse from './components/pages/TermsofUse.jsx'
 import SalesPolicy from './components/pages/SalesPolicy.jsx'
 import Legal from './components/pages/Legal.jsx'
