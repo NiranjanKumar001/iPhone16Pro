@@ -121,3 +121,16 @@ canvas {
     @apply opacity-0 translate-y-[100px]
   }
 }
+/* Example styles to ensure the hamburger menu looks clean */
+.bg-zinc-900 {
+  background-color: #1a1a1a;
+}
+
+@media (min-width: 640px) {
+  /* On medium devices and above, ensure the navbar is aligned horizontally */
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}
