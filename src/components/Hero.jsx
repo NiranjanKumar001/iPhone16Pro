@@ -119,7 +119,7 @@ const HeroWithNavbar = () => {
           >
             <a
               href="#highlights"
-              className="btn bg-white text-black rounded-full text-lg font-medium mb-4 hover:bg-opacity-90 transition-all"
+              className="btn bg-white text-white rounded-full text-md font-thin mb-4 "
             >
               Buy
             </a>
