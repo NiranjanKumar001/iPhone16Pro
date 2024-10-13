@@ -25,7 +25,7 @@ Contributors can enhance the project by implementing new features or improvement
 
   
 ## Submitting a Pull Request?
-**1.** Start by forking the [**WordWise**](https://github.com/NiranjanKumar001/iPhone16Pro) repository. Click on the <a href="https://github.com/NiranjanKumar001/iPhone16Pro"><img src="https://i.imgur.com/G4z1kEe.png" height="21" width="21"></a> symbol at the top right corner.
+**1.** Start by forking the [**iPhone16Pro**](https://github.com/NiranjanKumar001/iPhone16Pro) repository. Click on the <a href="https://github.com/NiranjanKumar001/iPhone16Pro"><img src="https://i.imgur.com/G4z1kEe.png" height="21" width="21"></a> symbol at the top right corner.
 
 **2.** Clone your forked repository:
 
