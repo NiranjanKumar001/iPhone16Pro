@@ -102,7 +102,4 @@ git push origin my-feature
 ## :zap: Code of Conduct 😇
 Please follow our project's code of conduct while contributing.</br>Treat all contributors and users with respect and create a positive and inclusive environment for everyone.
 
-## :zap: License 📄
-The project is licensed under ***MIT***. Make sure to review and comply with the license terms.</br>We hope this guide helps you get started with contributing to our open-source project. Thank you for your contribution!
-
 #### Congratulations on successfully submitting your PR to our project! 🎉 
