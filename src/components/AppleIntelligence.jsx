@@ -93,7 +93,7 @@ const AppleIntelligence = () => {
     },
   ];
   return (
-    <section className="w-full flex flex-col justify-center items-center md:px-32 bg-gradient-to-t  from-[#1c1b1b] via-[#222121] to-[#00000055] ">
+    <section className="w-full flex flex-col justify-center items-center lg:px-32 bg-gradient-to-t  from-[#1c1b1b] via-[#222121] to-[#00000055] ">
       <div className="hidden min-[1075px]:flex  justify-center w-[80%] xl:w-3/5">
         <ul className="text-lg flex gap-6 text-[#86868b] h-9 w-full font-semibold ">
           <li
@@ -127,7 +127,7 @@ const AppleIntelligence = () => {
         Items.map((item, i) => (
           <div
             key={i}
-            className={`w-[87%]  h-[80%]  pt-10 items-center  duration-500 transition-opacity ease-in-out delay-0 lg:  ${
+            className={`w-[87%]  h-[80%]  pt-10 items-center text-[14px]  duration-500 transition-opacity ease-in-out delay-0 lg:  ${
               i !== selected && "min-[1075px]:hidden"
             }`}
           >
@@ -144,7 +144,7 @@ const AppleIntelligence = () => {
                 <div className="w-80 animate-fade flex justify-center">
                   <img src={item.card1.img} alt="" />
                 </div>
-                <div className="text-center w-[85%] animate-fade ">
+                <div className="text-center w-[73%]  animate-fade ">
                   {item.card1.text}{" "}
                   <span className="text-white font-bold">
                     {item.card1.StrongText}
@@ -154,7 +154,7 @@ const AppleIntelligence = () => {
               </div>
               <div className="min-[1075px]:w-1/2 flex flex-col gap-7">
                 <div className="py-10 leading-5 bg-black flex flex-col gap-14  rounded-xl text-gray-200">
-                  <div className="text-center px-24 min-[1075px]:px-20 animate-fade">
+                  <div className="text-center px-28 min-[1075px]:px-24 animate-fade">
                     {item.card2.text}{" "}
                     <strong className="text-white font-bold">
                       {item.card2.StrongText}
@@ -167,7 +167,7 @@ const AppleIntelligence = () => {
                   </div>
                 </div>
                 <div className="bg-black w-full h-full  rounded-xl overflow-hidden">
-                  <p className="text-center px-[15%] py-14 animate-fade">
+                  <p className="text-center px-[22%] py-14 animate-fade">
                     {item.card3.text}{" "}
                     <strong className="text-white">
                       {item.card3.StrongText}
