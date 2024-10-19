@@ -30,11 +30,10 @@ import explore2 from "/assets/images/explore2.jpg";
 import chip from "/assets/images/chip.png";
 import frame from "/assets/images/frame.png";
 
-
-import ic1 from '../../public/assets/images/IC1.jpg';
-import ic2 from '../../public/assets/images/IC2.jpg';
-import ic3 from '../../public/assets/images/IC3.jpg';
-import ic4 from '../../public/assets/images/IC4.jpg';
+import ic1 from "../../public/assets/images/IC1.jpg";
+import ic2 from "../../public/assets/images/IC2.jpg";
+import ic3 from "../../public/assets/images/IC3.jpg";
+import ic4 from "../../public/assets/images/IC4.jpg";
 
 export const heroVideo = hmv;
 export const smallHeroVideo = smallmv;
@@ -66,9 +65,31 @@ export const chipImg = chip;
 export const frameImg = frame;
 
 export const ic1Img = ic1;
-export const  ic2Img= ic2;
-export const ic3Img= ic3;
-export const ic4Img= ic4;
+export const ic2Img = ic2;
+export const ic3Img = ic3;
+export const ic4Img = ic4;
 
 import iPhoneImage from "/assets/images/new.png";
 export const iPhone16Image = iPhoneImage;
+
+import img11 from "/assets/images/iphoneImg1.png";
+import img12 from "/assets/images/img2card1.png";
+import img13 from "/assets/images/img3card1.jpg";
+
+import img21 from "/assets/images/iphoneImg2.png";
+import img22 from "/assets/images/img2card2.jpg";
+import img23 from "/assets/images/img3card2.jpg";
+
+import img31 from "/assets/images/iphoneImg3.png";
+import img32 from "/assets/images/img2card3.jpg";
+import img33 from "/assets/images/img3card3.jpg";
+
+export const card1Img1 = img11;
+export const card2Img1 = img21;
+export const card3Img1 = img31;
+export const img2card1 = img12;
+export const img2card2 = img22;
+export const img2card3 = img32;
+export const img3card1 = img13;
+export const img3card2 = img23;
+export const img3card3 = img33;
