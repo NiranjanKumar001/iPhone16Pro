@@ -108,17 +108,20 @@ const FloatingNavbar = () => {
       {/* Mobile Navigation Links */}
       <nav
         className={`md:hidden absolute top-14 left-0 w-full bg-zinc text-sm flex flex-col gap-5 p-6 z-50 transition-all duration-300 ease-in-out transform ${
-          isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"
+          isMenuOpen ? "opacity-100 translate-y-0" : "hidden -translate-y-5"
         }`}
-        style={{ 
-          fontSize: "0.75rem", 
+        style={{
+          fontSize: "0.75rem",
           fontFamily: `"SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif`,
         }}
       >
         <Link to="/" className="text-gray-400 hover:text-white transition">
           | Overview
         </Link>
-        <Link to="/Switch" className="text-gray-400 hover:text-white transition">
+        <Link
+          to="/Switch"
+          className="text-gray-400 hover:text-white transition"
+        >
           | Switch from Android to iPhone
         </Link>
         <Link to="/Specs" className="text-gray-400 hover:text-white transition">

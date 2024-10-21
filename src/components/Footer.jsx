@@ -1,27 +1,55 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { footerLinks } from "../constants";
 
 // FooterSection Component
-const FooterSection = ({ title, children }) => (
-  <div className="flex flex-col">
-    <h3 className="font-semibold text-white mb-1">{title}</h3>
-    <div className="space-y-2">{children}</div>
-  </div>
-);
+const FooterSection = ({ title, children }) => {
+  const [expand, setExpand] = useState(false);
+  return (
+    <div className="flex flex-col ">
+      <button
+        className="flex justify-between font-semibold text-white mb-1 border-b-1 border-gray-100 py-2 md:py-0 md:border-none"
+        onClick={(e) => setExpand(!expand)}
+      >
+        <h3>{title}</h3>
+        <button
+          className={`text-gray-200 text-md flex items-center md:hidden ${
+            expand && "rotate-180"
+          }`}
+        >
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 448 512"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path>
+          </svg>
+        </button>
+      </button>
+      <div className={`space-y-2 ${expand || "hidden md:block"}`}>
+        {children}
+      </div>
+    </div>
+  );
+};
 
 // FooterLink Component
 const FooterLink = ({ children }) => (
-  <a href="#" className="#FFFFFFCC hover:underline text-[12px] block">
+  <a href="#" className="text-[#ffffffcc] hover:underline text-[12px] block">
     {children}
   </a>
 );
 
 export default function Footer() {
   return (
-    <div className="bg-[#1d1d1f]">
+    <div className="bg-[#1d1d1f] px-3 lg:px-52">
       {/* Breadcrumb Section */}
-      <nav className="flex items-center gap-2 pl-40 py-1 mx-28">
+      {/* <nav className="flex items-center gap-2 pl-40 py-1 mx-28"> */}
+      <nav className="flex items-center gap-2  py-1 ">
         <a href="#" className="#FFFFFFCC text-[12px] hover:underline">
           <svg className="w-4 h-4" viewBox="0 0 17 17" fill="currentColor">
             <path
@@ -32,13 +60,17 @@ export default function Footer() {
           </svg>
         </a>
         <span className="text-gray-12px">›</span>
-        <a href="#" className="#FFFFFFCC text-[12px] hover:underline">iPhone</a>
+        <a href="#" className="#FFFFFFCC text-[12px] hover:underline">
+          iPhone
+        </a>
         <span className="#FFFFFFCC">›</span>
-        <a href="#" className="#FFFFFFCC text-[12px] hover:underline">iPhone 16 Pro</a>
+        <a href="#" className="#FFFFFFCC text-[12px] hover:underline">
+          iPhone 16 Pro
+        </a>
       </nav>
 
       {/* Main Footer */}
-      <footer className="max-w-7xl mx-28 pl-40 pt-3 py-12 text-[12px]">
+      <footer className="max-w-[93vw]   pt-3 pb-4 text-[12px]">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-0 mb-12 text-[12px]">
           {/* Shop and Learn */}
           <div>
@@ -54,7 +86,7 @@ export default function Footer() {
               <FooterLink>Accessories</FooterLink>
               <FooterLink>Gift Cards</FooterLink>
             </FooterSection>
-            <div className="mr-10 mt-5">
+            <div className=" md:mt-5">
               <FooterSection title="Apple Wallet">
                 <FooterLink>Wallet</FooterLink>
               </FooterSection>
@@ -68,7 +100,7 @@ export default function Footer() {
               <FooterLink>Apple Store Account</FooterLink>
               <FooterLink>iCloud.com</FooterLink>
             </FooterSection>
-            <div className="mr-10 mt-5">
+            <div className=" md:mt-5">
               <FooterSection title="Entertainment">
                 <FooterLink>Apple One</FooterLink>
                 <FooterLink>Apple TV+</FooterLink>
@@ -98,13 +130,13 @@ export default function Footer() {
               <FooterLink>Apple and Business</FooterLink>
               <FooterLink>Shop for Business</FooterLink>
             </FooterSection>
-            <div className="mr-10 mt-5">
+            <div className="md:mt-5">
               <FooterSection title="For Education">
                 <FooterLink>Apple and Education</FooterLink>
                 <FooterLink>Shop for University</FooterLink>
               </FooterSection>
             </div>
-            <div className="mr-10 mt-5">
+            <div className=" md:mt-5">
               <FooterSection title="For Healthcare">
                 <FooterLink>Apple in Healthcare</FooterLink>
                 <FooterLink>Health on Apple Watch</FooterLink>
@@ -121,7 +153,7 @@ export default function Footer() {
               <FooterLink>Privacy</FooterLink>
               <FooterLink>Supplier Responsibility</FooterLink>
             </FooterSection>
-            <div className="mr-10 mt-5">
+            <div className="md:mt-5">
               <FooterSection title="About Apple">
                 <FooterLink>Newsroom</FooterLink>
                 <FooterLink>Apple Leadership</FooterLink>
@@ -137,27 +169,46 @@ export default function Footer() {
 
         {/* Store Locator */}
         <div className="text-[12px] text-gray-400 mb-4">
-          More ways to shop: <a href="#" className="text-blue underline">Find an Apple Store</a> or <a href="#" className="text-blue underline">other retailer</a> near you. Or call 0008000 040 1966.
+          More ways to shop:{" "}
+          <a href="#" className="text-blue underline">
+            Find an Apple Store
+          </a>{" "}
+          or{" "}
+          <a href="#" className="text-blue underline">
+            other retailer
+          </a>{" "}
+          near you. Or call 0008000 040 1966.
         </div>
 
         {/* Copyright Section */}
-        <div className="border-t border-gray-700 pt-2">
-          <div className="flex flex-col md:flex-row justify-between items-center text-[12px] text-gray-400">
+        <div className="flex flex-col-reverse md:flex-row  justify-between gap-5 md:gap-0 border-t md:border-gray-700 pt-2 text-gray-400">
+          <div className="flex flex-col lg:flex-row justify-between  lg:items-center text-[12px] ">
             <div className="mb-1 md:mb-0">
               <span>Copyright © 2024 Apple Inc. All rights reserved.</span>
             </div>
-            <div className="flex flex-wrap gap-4">
-              <a href="#" className="hover:underline">Privacy Policy</a>
-              <span className="hidden md:block">|</span>
-              <a href="#" className="hover:underline">Terms of Use</a>
-              <span className="hidden md:block">|</span>
-              <a href="#" className="hover:underline">Sales Policy</a>
-              <span className="hidden md:block">|</span>
-              <a href="#" className="hover:underline">Legal</a>
-              <span className="hidden md:block">|</span>
-              <a href="#" className="hover:underline">Site Map</a>
+            <div className="flex flex-wrap gap-3 text-gray-200">
+              <a href="#" className="hover:underline">
+                Privacy Policy
+              </a>
+              <span className="block">|</span>
+              <a href="#" className="hover:underline">
+                Terms of Use
+              </a>
+              <span className="block">|</span>
+              <a href="#" className="hover:underline">
+                Sales Policy
+              </a>
+              <span className="block">|</span>
+              <a href="#" className="hover:underline">
+                Legal
+              </a>
+              <span className="block">|</span>
+              <a href="#" className="hover:underline">
+                Site Map
+              </a>
             </div>
           </div>
+          <div>India</div>
         </div>
       </footer>
     </div>
