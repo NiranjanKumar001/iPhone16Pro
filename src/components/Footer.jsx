@@ -46,7 +46,7 @@ const FooterLink = ({ children }) => (
 
 export default function Footer() {
   return (
-    <div className="bg-[#1d1d1f] px-3 lg:px-56">
+    <div className="bg-[#1d1d1f] px-3 lg:px-52">
       {/* Breadcrumb Section */}
       {/* <nav className="flex items-center gap-2 pl-40 py-1 mx-28"> */}
       <nav className="flex items-center gap-2  py-1 ">
@@ -70,7 +70,7 @@ export default function Footer() {
       </nav>
 
       {/* Main Footer */}
-      <footer className="max-w-[93vw]   pt-3 py-12 text-[12px]">
+      <footer className="max-w-[93vw]   pt-3 pb-4 text-[12px]">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-0 mb-12 text-[12px]">
           {/* Shop and Learn */}
           <div>
@@ -181,33 +181,34 @@ export default function Footer() {
         </div>
 
         {/* Copyright Section */}
-        <div className="border-t border-gray-700 pt-2">
-          <div className="flex flex-col md:flex-row justify-between items-center text-[12px] text-gray-400">
+        <div className="flex flex-col-reverse md:flex-row  justify-between gap-5 md:gap-0 border-t md:border-gray-700 pt-2 text-gray-400">
+          <div className="flex flex-col lg:flex-row justify-between  lg:items-center text-[12px] ">
             <div className="mb-1 md:mb-0">
               <span>Copyright © 2024 Apple Inc. All rights reserved.</span>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3 text-gray-200">
               <a href="#" className="hover:underline">
                 Privacy Policy
               </a>
-              <span className="hidden md:block">|</span>
+              <span className="block">|</span>
               <a href="#" className="hover:underline">
                 Terms of Use
               </a>
-              <span className="hidden md:block">|</span>
+              <span className="block">|</span>
               <a href="#" className="hover:underline">
                 Sales Policy
               </a>
-              <span className="hidden md:block">|</span>
+              <span className="block">|</span>
               <a href="#" className="hover:underline">
                 Legal
               </a>
-              <span className="hidden md:block">|</span>
+              <span className="block">|</span>
               <a href="#" className="hover:underline">
                 Site Map
               </a>
             </div>
           </div>
+          <div>India</div>
         </div>
       </footer>
     </div>
